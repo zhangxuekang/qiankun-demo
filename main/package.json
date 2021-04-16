@@ -1,22 +1,34 @@
 {
-  "name": "qiankun-base",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "devDependencies": {
-    "@babel/core": "^7.10.2",
-    "@babel/preset-env": "^7.10.2",
-    "babel-loader": "^8.1.0",
-    "html-webpack-plugin": "^4.3.0",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.11.0"
+  "name": "main",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "start": "npm run serve"
   },
   "dependencies": {
-    "qiankun": "^2.0.14"
+    "@tutor/tutor-microfrontend-libs": "0.1.0-beta.2",
+    "core-js": "^3.6.5",
+    "nprogress": "^0.2.0",
+    "qiankun": "^2.0.22",
+    "vue": "^2.6.11"
   },
-  "scripts": {
-    "start": "npx webpack-dev-server",
-    "dev": "(cd .. && cd vue-app && npm run serve) & (cd .. && cd react-app && npm run start) && (cd .. && cd main && npx webpack-dev-server)"
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-standard": "^5.1.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "sass": "^1.26.10",
+    "sass-loader": "^10.0.2",
+    "vue-template-compiler": "^2.6.11"
   }
 }
