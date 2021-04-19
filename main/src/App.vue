@@ -7,24 +7,28 @@
       <div class="logo">QIANKUN-EXAMPLE</div>
       <ul class="sub-apps">
         <li v-for="item in microApps" :class="{active: item.activeRule === current}" :key="item.name" @click="goto(item)">{{ item.name }}</li>
+        <li key="111" @click="load()">手动加载</li>
       </ul>
       <div class="userinfo">主应用的state：{{ JSON.stringify(user) }}</div>
     </div>
+    <div id="aaa"></div>
     <div id="subapp-viewport"></div>
   </div>
 </template>
 
 <script>
 import NProgress from 'nprogress'
-import microApps from './micro-app'
+import microApps, { ation } from './micro-app'
 import store from '@/store'
+import { loadMicroApp } from 'qiankun'
 export default {
   name: 'App',
   data () {
     return {
       isLoading: true,
       microApps,
-      current: '/sub-vue/'
+      current: '/sub-vue/',
+      app: null
     }
   },
   computed: {
@@ -45,6 +49,27 @@ export default {
   },
   components: {},
   methods: {
+    load () {
+      if (this.app) {
+        this.app.mountPromise.then(() => {
+          this.app.unmount()
+          this.app = null
+        })
+      } else {
+        console.log(111, '---50--mark2021')
+        const $ = document.querySelector('#aaa')
+        console.log($, '---57--mark2021')
+        this.app = loadMicroApp({
+          name: 'sub-react2',
+          entry: '//localhost:7799/subapp/sub-react2/',
+          container: $,
+          props: { ation, routerBase: '/sub-react2', key: 'loadMicroApp-react2' }
+        },
+        {
+          singular: false
+        })
+      }
+    },
     goto (item) {
       history.pushState(null, item.activeRule, item.activeRule)
       // this.current = item.name

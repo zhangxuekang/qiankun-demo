@@ -2,6 +2,7 @@ import { Emitter } from '@tutor/tutor-microfrontend-libs'
 
 export default function setStore (props) {
   let action = null
+  let key = ''
   if (!props) {
     // 子应用单独运行
     const communication = new Emitter()
@@ -9,8 +10,10 @@ export default function setStore (props) {
     action = communication.propsEmitter('main', propDataA)()
   } else {
     action = props.ation()
+    key = props.key
   }
   const { emitter, propData } = action
+  setValue('list', [...getValue('list'), key])
 
   function getValue (key) {
     return key ? propData[key] : propData

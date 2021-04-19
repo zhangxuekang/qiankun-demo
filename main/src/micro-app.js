@@ -2,8 +2,8 @@ import store from './store'
 import { Emitter } from '@tutor/tutor-microfrontend-libs'
 
 const communication = new Emitter()
-const propData = { app: 'main', user: 'zhangxk' }
-const ation = communication.propsEmitter('main', propData)
+const propData = { app: 'main', user: 'zhangxk', list: [] }
+export const ation = communication.propsEmitter('main', propData)
 const emitter = communication.getEmitter()
 emitter.addListener('user', (value) => {
   console.log('%c主应用监听到user变化', 'color:rgb(21,27,155);background-color:#9c2', '---9--mark2021')
@@ -33,6 +33,7 @@ const apps = microApps.map(item => {
     ...item,
     container: '#subapp-viewport', // 子应用挂载的div
     props: {
+      key: item.name,
       routerBase: item.activeRule, // 下发基础路由
       getGlobalState: store.getGlobalState, // 下发getGlobalState方法
       ation

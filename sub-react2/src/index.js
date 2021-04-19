@@ -60,7 +60,6 @@ export async function unmount() {
  */
 export async function update(props) {
   console.log("update props", props);
-  render();
 }
 
 // If you want your app to work offline and load faster, you can change
