@@ -47,4 +47,10 @@ registerMicroApps(apps, {
   ]
 })
 setDefaultMountApp('/sub-vue')
-start()
+start({
+  sandbox: {
+    strictStyleIsolation: true,
+    experimentalStyleIsolation: true
+  },
+  singular: false
+})

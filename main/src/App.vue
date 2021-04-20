@@ -66,7 +66,11 @@ export default {
           props: { ation, routerBase: '/sub-react2', key: 'loadMicroApp-react2' }
         },
         {
-          singular: false
+          singular: false,
+          sandbox: {
+            strictStyleIsolation: true,
+            experimentalStyleIsolation: true
+          }
         })
       }
     },
